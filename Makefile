@@ -12,33 +12,25 @@
 
 NAME=libftprintf.a
 
-SRCS=ft_printf.c
+SRCS=ft_printf.c utils.c ft_hex.c ft_printnbr.c ft_porcentaje.c ft_print_unsigned.c
 
-BONUS_SRCS=ft_printf.c
-
-OBJECTS=ft_printf.o
-
-BONUS_OBJECTS=ft_printf.o
+OBJECTS=ft_printf.o utils.o ft_hex.o ft_printnbr.o ft_porcentaje.o ft_print_unsigned.o
 
 INCLUDES=./
 
 all: $(NAME)
 
-$(NAME): $(SRCS) printf.h
-	@gcc -Wall -Wextra -Werror -I$(INCLUDES) -c $(SRCS) $(BONUS_SRCS)
+$(NAME): $(SRCS) ft_printf.h
+	@gcc -Wall -Wextra -Werror -I$(INCLUDES) -c $(SRCS)
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 
-bonus: $(BONUS_OBJECTS)
-	@ar rc $(NAME) $(BONUS_OBJECTS)
-	@ranlib $(NAME)
-
 clean:
-	@/bin/rm -f $(OBJECTS) $(BONUS_OBJECTS)
+	@/bin/rm -f $(OBJECTS)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
 
-.PHONY all bonus clean fclean re
+# .PHONY all clean fclean re
