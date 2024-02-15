@@ -23,19 +23,17 @@ int	conversiones(va_list args, char const format)
 	else if (format == 's')
 		print_lenght += ft_putstr(va_arg(args, char *));
 	else if (format == 'p')
-		print_lenght += ft_hex(va_arg(args, int), "0123456789abcdef");
-	else if (format == 'd')
-		print_lenght += ft_printnbr(va_arg(args, int), 0);
-	else if (format == 'i')
+		print_lenght += ft_pointer_hex(va_arg(args, unsigned long long));
+	else if (format == 'd' || format == 'i')
 		print_lenght += ft_printnbr(va_arg(args, int), 0);
 	else if (format == 'u')
 		print_lenght += ft_print_unsigned(va_arg(args, unsigned int));
 	else if (format == 'x')
-		print_lenght += ft_hex(va_arg(args, int), "0123456789abcdef");
+		print_lenght += ft_hex(va_arg(args, unsigned int), 'x');
 	else if (format == 'X')
-		print_lenght += ft_hex(va_arg(args, int), "0123456789ABCDEF");
+		print_lenght += ft_hex(va_arg(args, unsigned int), 'X');
 	else if (format == '%')
-		print_lenght += ft_porcentaje(va_arg(args, char *));
+		print_lenght += ft_porcentaje();
 	return (print_lenght);
 }
 
@@ -61,63 +59,4 @@ int	ft_printf(char const *str, ...)
 	}
 	va_end(args);
 	return (print_lenght);
-}
-
-int	main(void)
-{
-	//COMPROBACIONS nomes un caracter (%c)
-	// printf(" \nResult length: %i\n", ft_printf("%c", 'c'));
-	// printf(" \nResult length: %i\n", ft_printf("a"));
-	// printf(" \nResult length: %i\n", ft_printf("%c", '2'));
-
-	//COMPROBACIONS STRINGS (%s)
-	//printf(" \nResult length: %i\n", ft_printf("%s", "hola"));
-	//printf(" \nResult length: %i\n", ft_printf(" NULL %s NULL ", NULL));
-
-
-	//COMPROBACIONS puntero (%p)
-	// int x = 102;
-    // printf("\nLa dirección de x es: %p\n", (void*)&x);
-
-	//COMPROBACIONS numero decimal (%d)
-	// printf(" \nResult length: %i\n", ft_printf("%d", 123));
-	// printf(" \nResult length: %i\n", ft_printf("%d", -123));
-	// printf(" \nResult length: %i\n", ft_printf("%d", +123));
-
-
-	//COMPROBACIONS numero entero de base 10 (%i)
-	// printf(" \nResult length: %i\n", ft_printf("%i", 123));
-	// printf(" \nResult length: %i\n", ft_printf("%i", 12));
-	// printf(" \nResult length: %i\n", ft_printf("%i", -1));
-	// printf(" \nResult length: %i\n", ft_printf("%i", 1000));
-	// printf(" \nResult length: %i\n", ft_printf("%i", 123));
-	// printf(" \nResult length: %i\n", ft_printf("%i", +123)); //VIGILAR SI AQUEST ES CORRECTE
-
-
-	// printf(" \nResult length: %i\n", ft_printf("%i", -960));
-	// printf(" \nResult length: %i\n", ft_printf("%i", +960));
-	// printf(" \nResult length: %i\n", ft_printf("%i", 0x122));
-	// printf(" \nResult length: %i\n", ft_printf("%i", 0X9));
-	// printf(" \nResult length: %i\n", ft_printf("%i", 03));
-
-	//COMPROBACIONS numero decimal sense signe (%u) 	=> possiblement no funcioni amb negatius
-	// printf(" \nResult length: %i\n", ft_printf("%u", 123));
-	// printf(" \nResult length: %i\n", ft_printf("%u", -123));
-	// printf(" \nResult length: %i\n", ft_printf("%u", +123));
-
-	//COMPROBACIONS numero hexadecimal en minuscules (%x)
-	printf(" \nResult length: %i\n", ft_printf("%x", 1));
-	printf(" \nResult length: %i\n", ft_printf("%x", -1));
-	printf(" \nResult length: %i\n", ft_printf("%x", 9));
-
-	//COMPROBACIONS numero hexadecimal en majuscules (%X)
-	//printf(" \nResult length: %i\n", ft_printf("%X", 960));
-
-	//COMPROBACIONS simbol porcentatge (%%)
-	//printf(" \nResult length: %i\n", ft_printf("%%", "20as"));
-
-
-
-
-	return (0);
 }

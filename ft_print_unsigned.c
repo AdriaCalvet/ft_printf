@@ -12,19 +12,28 @@
 
 #include "ft_printf.h"
 
-int	ft_print_unsigned(unsigned int n)
+static void	printout(unsigned int nb)
 {
-	int		print_length;
-	char	*num;
-
-	print_length = 0;
-	if (n == 0)
-		print_length += write(1, "0", 1);
-	else
+	if (nb > 9)
+		ft_print_unsigned(nb / 10);
+	if (nb <= 9)
 	{
-		num = ft_uitoa(n);
-		print_length += ft_putstr(num);
-		free(num);
+		ft_printchar(nb + 48);
+		return ;
 	}
-	return (print_length);
+	ft_printchar((nb % 10) + 48);
+}
+
+int	ft_print_unsigned(unsigned int nb)
+{
+	unsigned int	i;
+
+	printout(nb);
+	i = 1;
+	while (nb > 9)
+	{
+		nb = nb / 10;
+		i++;
+	}
+	return (i);
 }

@@ -12,9 +12,9 @@
 
 NAME=libftprintf.a
 
-SRCS=ft_printf.c utils.c ft_hex.c ft_printnbr.c ft_porcentaje.c ft_print_unsigned.c
+SRCS=ft_printf.c utils.c ft_hex.c ft_printnbr.c ft_porcentaje.c ft_print_unsigned.c ft_pointer_hex.c
 
-OBJECTS=ft_printf.o utils.o ft_hex.o ft_printnbr.o ft_porcentaje.o ft_print_unsigned.o
+OBJECTS=ft_printf.o utils.o ft_hex.o ft_printnbr.o ft_porcentaje.o ft_print_unsigned.o ft_pointer_hex.o
 
 INCLUDES=./
 

@@ -15,15 +15,14 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-//BORRAR STDIO QUAN ENTREGUI / ES PER FER PROVES
-# include <stdio.h>
 
 void	end_read(char *str, int n);
 char	*ft_uitoa(unsigned int n);
 int		ft_printf(char const *str, ...);
-int		ft_hex(int n, char *base);
+int		ft_hex(unsigned int n, char base);
+int		ft_pointer_hex(unsigned long long num);
 int		ft_print_unsigned(unsigned int n);
-int		ft_porcentaje(char *str);
+int		ft_porcentaje(void);
 int		conversiones(va_list args, char const format);
 int		ft_printchar(int c);
 int		ft_putstr(char *str);
